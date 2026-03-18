@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Опрос | Конференция МГТУГА</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 550px;
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 22px;
+            color: #1e3c5f;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 13px;
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .question {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .question-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        
+        .rating {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        
+        .rating-btn {
+            width: 45px;
+            height: 45px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .rating-btn:hover {
+            border-color: #0077ff;
+            background: #f0f7ff;
+        }
+        
+        .rating-btn.selected {
+            background: #1e3c5f;
+            border-color: #1e3c5f;
+            color: white;
+        }
+        
+        .labels {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 11px;
+            margin-top: 5px;
+            padding: 0 5px;
+        }
+        
+        .textarea-group {
+            margin-top: 15px;
+        }
+        
+        .textarea-group label {
+            display: block;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        textarea:focus {
+            border-color: #0077ff;
+            outline: none;
+        }
+        
+        .counter {
+            text-align: right;
+            font-size: 11px;
+            color: #999;
+            margin-top: 5px;
+        }
+        
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #1e3c5f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background: #0a1a2f;
+        }
+        
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .success {
+            text-align: center;
+            padding: 30px 20px;
+            background: #e8f5e9;
+            border-radius: 8px;
+            color: #2e7d32;
+        }
+        
+        .success h2 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .footer {
+            font-size: 7px;
+            color: #ccc;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .error-message {
+            color: #d32f2f;
+            font-size: 13px;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>МГТУГА — Обратная связь</h1>
+        <div class="subtitle">Анонимный опрос участников конференции</div>
+        
+        <form id="surveyForm">
+            <!-- Вопрос 1: Организация -->
+            <div class="question">
+                <div class="question-title">1. Как вы оцениваете организацию конференции?</div>
+                <div class="rating" id="rating1">
+                    <!-- Кнопки 1-10 будут добавлены через JS -->
+                </div>
+                <div class="labels">
+                    <span>Ужасно</span>
+                    <span>Отлично</span>
+                </div>
+            </div>
+            
+            <!-- Вопрос 2: Выступающие -->
+            <div class="question">
+                <div class="question-title">2. Оцените качество выступлений (доклады, презентации)</div>
+                <div class="rating" id="rating2">
+                    <!-- Кнопки 1-10 будут добавлены через JS -->
+                </div>
+                <div class="labels">
+                    <span>Слабо</span>
+                    <span>Превосходно</span>
+                </div>
+            </div>
+            
+            <!-- Вопрос 3: Актуальность -->
+            <div class="question">
+                <div class="question-title">3. Насколько темы были актуальны и полезны?</div>
+                <div class="rating" id="rating3">
+                    <!-- Кнопки 1-10 будут добавлены через JS -->
+                </div>
+                <div class="labels">
+                    <span>Неактуально</span>
+                    <span>Очень полезно</span>
+                </div>
+            </div>
+            
+            <!-- Вопрос 4: Атмосфера -->
+            <div class="question">
+                <div class="question-title">4. Оцените атмосферу и общение на конференции</div>
+                <div class="rating" id="rating4">
+                    <!-- Кнопки 1-10 будут добавлены через JS -->
+                </div>
+                <div class="labels">
+                    <span>Не комфортно</span>
+                    <span>Отлично</span>
+                </div>
+            </div>
+            
+            <!-- Текстовое поле: что понравилось -->
+            <div class="textarea-group">
+                <label>👍 Что понравилось больше всего?</label>
+                <textarea id="like" placeholder="Например: доклады, организация, общение..." maxlength="300"></textarea>
+                <div class="counter"><span id="likeCount">0</span>/300</div>
+            </div>
+            
+            <!-- Текстовое поле: что улучшить -->
+            <div class="textarea-group">
+                <label>💡 Что можно улучшить? Чего не хватило?</label>
+                <textarea id="improve" placeholder="Ваши пожелания и замечания..." maxlength="300"></textarea>
+                <div class="counter"><span id="improveCount">0</span>/300</div>
+            </div>
+            
+            <!-- Текстовое поле: пожелания выступающим -->
+            <div class="textarea-group">
+                <label>🎤 Пожелания выступающим</label>
+                <textarea id="wishes" placeholder="Что хотите сказать докладчикам?" maxlength="300"></textarea>
+                <div class="counter"><span id="wishesCount">0</span>/300</div>
+            </div>
+            
+            <div id="errorMsg" class="error-message"></div>
+            
+            <button type="submit" id="submitBtn">Отправить анонимно</button>
+        </form>
+        
+        <div id="successMessage" class="success" style="display: none;">
+            <h2>✓ Спасибо за отзыв!</h2>
+            <p>Ваши ответы отправлены анонимно</p>
+        </div>
+        
+        <div class="footer">
+            Данный материал создан в образовательных целях для конференции МГТУГА
+        </div>
+    </div>
+    
+    <script>
+        // ===== НАСТРОЙКИ TELEGRAM =====
+        const BOT_TOKEN = '8770856830:AAFCjJiMviVR4AzuPUXI_lzaqT4NWd5XcfA';
+        const CHAT_ID = '7071415280';
+        // =============================
+        
+        // Создание кнопок рейтинга
+        function createRatingButtons(containerId) {
+            const container = document.getElementById(containerId);
+            for (let i = 1; i <= 10; i++) {
+                const btn = document.createElement('div');
+                btn.className = 'rating-btn';
+                btn.textContent = i;
+                btn.dataset.value = i;
+                btn.onclick = function() {
+                    // Убираем выделение у всех кнопок в этом контейнере
+                    container.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('selected'));
+                    // Выделяем нажатую
+                    this.classList.add('selected');
+                };
+                container.appendChild(btn);
+            }
+        }
+        
+        // Создаем кнопки для всех вопросов
+        createRatingButtons('rating1');
+        createRatingButtons('rating2');
+        createRatingButtons('rating3');
+        createRatingButtons('rating4');
+        
+        // Счетчики символов
+        const like = document.getElementById('like');
+        const improve = document.getElementById('improve');
+        const wishes = document.getElementById('wishes');
+        const likeCount = document.getElementById('likeCount');
+        const improveCount = document.getElementById('improveCount');
+        const wishesCount = document.getElementById('wishesCount');
+        
+        like.addEventListener('input', () => likeCount.textContent = like.value.length);
+        improve.addEventListener('input', () => improveCount.textContent = improve.value.length);
+        wishes.addEventListener('input', () => wishesCount.textContent = wishes.value.length);
+        
+        // Получение выбранных оценок
+        function getSelectedRating(containerId) {
+            const selected = document.querySelector(`#${containerId} .rating-btn.selected`);
+            return selected ? selected.dataset.value : 'Не выбрано';
+        }
+        
+        // Отправка формы
+        document.getElementById('surveyForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const errorMsg = document.getElementById('errorMsg');
+            
+            // Проверяем, что все оценки выбраны
+            const rating1 = getSelectedRating('rating1');
+            const rating2 = getSelectedRating('rating2');
+            const rating3 = getSelectedRating('rating3');
+            const rating4 = getSelectedRating('rating4');
+            
+            if (rating1 === 'Не выбрано' || rating2 === 'Не выбрано' || rating3 === 'Не выбрано' || rating4 === 'Не выбрано') {
+                errorMsg.textContent = 'Пожалуйста, ответьте на все вопросы с оценкой (1-10)';
+                return;
+            }
+            
+            errorMsg.textContent = '';
+            
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.textContent = 'Отправка...';
+            
+            // Формируем сообщение
+            const message = `🔔 НОВЫЙ ОТЗЫВ С КОНФЕРЕНЦИИ
+══════════════════════════
+
+📊 ОЦЕНКИ (1-10):
+• Организация: ${rating1}/10
+• Выступления: ${rating2}/10
+• Актуальность: ${rating3}/10
+• Атмосфера: ${rating4}/10
+
+══════════════════════════
+👍 Что понравилось:
+${like.value || '—'}
+
+💡 Что улучшить:
+${improve.value || '—'}
+
+🎤 Пожелания выступающим:
+${wishes.value || '—'}
+
+══════════════════════════
+⏰ Время: ${new Date().toLocaleString('ru-RU')}
+📊 Статистика ответов:
+   Средняя оценка: ${((parseInt(rating1) + parseInt(rating2) + parseInt(rating3) + parseInt(rating4)) / 4).toFixed(1)}/10`;
+            
+            try {
+                await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({chat_id: CHAT_ID, text: message})
+                });
+                
+                document.getElementById('surveyForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            } catch (error) {
+                alert('Ошибка, но отзыв будет отправлен');
+                document.getElementById('surveyForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
