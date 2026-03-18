@@ -12,8 +12,8 @@
         }
         
         body {
-            font-family: Arial, sans-serif;
-            background: #f0f2f5;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -23,41 +23,43 @@
         
         .container {
             width: 100%;
-            max-width: 550px;
+            max-width: 600px;
             background: white;
-            border-radius: 12px;
+            border-radius: 20px;
             padding: 25px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
         
         h1 {
-            font-size: 22px;
+            font-size: 24px;
             color: #1e3c5f;
             margin-bottom: 5px;
             text-align: center;
+            font-weight: 600;
         }
         
         .subtitle {
             color: #666;
-            font-size: 13px;
+            font-size: 14px;
             text-align: center;
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 2px solid #f0f0f0;
         }
         
         .question {
-            background: #f9f9f9;
-            border-radius: 8px;
-            padding: 18px;
-            margin-bottom: 15px;
+            background: #f8faff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #eef2f6;
         }
         
         .question-title {
             font-weight: 600;
-            color: #333;
-            margin-bottom: 12px;
-            font-size: 15px;
+            color: #1e3c5f;
+            margin-bottom: 15px;
+            font-size: 16px;
         }
         
         .rating {
@@ -70,9 +72,9 @@
         .rating-btn {
             width: 45px;
             height: 45px;
-            border: 1px solid #ddd;
+            border: 2px solid #ddd;
             background: white;
-            border-radius: 8px;
+            border-radius: 12px;
             font-size: 16px;
             font-weight: 600;
             color: #333;
@@ -84,14 +86,17 @@
         }
         
         .rating-btn:hover {
-            border-color: #0077ff;
+            border-color: #667eea;
             background: #f0f7ff;
+            transform: scale(1.05);
         }
         
         .rating-btn.selected {
-            background: #1e3c5f;
-            border-color: #1e3c5f;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #667eea;
             color: white;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
         }
         
         .labels {
@@ -99,93 +104,147 @@
             justify-content: space-between;
             color: #888;
             font-size: 11px;
-            margin-top: 5px;
+            margin-top: 8px;
             padding: 0 5px;
         }
         
         .textarea-group {
-            margin-top: 15px;
+            margin-bottom: 20px;
         }
         
         .textarea-group label {
             display: block;
             font-weight: 600;
-            color: #333;
+            color: #1e3c5f;
             margin-bottom: 8px;
             font-size: 15px;
         }
         
         textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            padding: 15px;
+            border: 2px solid #eef2f6;
+            border-radius: 15px;
             font-size: 14px;
             font-family: inherit;
             resize: vertical;
-            min-height: 80px;
+            min-height: 100px;
+            transition: border-color 0.2s;
         }
         
         textarea:focus {
-            border-color: #0077ff;
+            border-color: #667eea;
             outline: none;
         }
         
         .counter {
             text-align: right;
-            font-size: 11px;
+            font-size: 12px;
             color: #999;
             margin-top: 5px;
         }
         
         button {
             width: 100%;
-            padding: 14px;
-            background: #1e3c5f;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: 15px;
+            font-size: 18px;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
             margin-top: 10px;
         }
         
-        button:hover {
-            background: #0a1a2f;
+        button:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102,126,234,0.4);
         }
         
         button:disabled {
             background: #ccc;
             cursor: not-allowed;
+            transform: none;
         }
         
         .success {
             text-align: center;
-            padding: 30px 20px;
-            background: #e8f5e9;
-            border-radius: 8px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border-radius: 20px;
             color: #2e7d32;
         }
         
         .success h2 {
-            margin-bottom: 10px;
-            font-size: 20px;
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+        
+        .success p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .success i {
+            font-size: 60px;
+            color: #4caf50;
+            margin-bottom: 20px;
         }
         
         .footer {
-            font-size: 7px;
-            color: #ccc;
+            font-size: 10px;
+            color: #999;
             text-align: center;
-            margin-top: 20px;
+            margin-top: 25px;
         }
         
         .error-message {
             color: #d32f2f;
-            font-size: 13px;
-            margin-top: 10px;
+            font-size: 14px;
+            margin-top: 15px;
             text-align: center;
+            padding: 10px;
+            background: #ffebee;
+            border-radius: 10px;
+        }
+        
+        .stats {
+            background: #f0f7ff;
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #1e3c5f;
+        }
+        
+        .stats-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .stats-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .stats-value {
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        @media (max-width: 480px) {
+            .rating-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -194,13 +253,15 @@
         <h1>МГТУГА — Обратная связь</h1>
         <div class="subtitle">Анонимный опрос участников конференции</div>
         
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+        </div>
+        
         <form id="surveyForm">
             <!-- Вопрос 1: Организация -->
             <div class="question">
                 <div class="question-title">1. Как вы оцениваете организацию конференции?</div>
-                <div class="rating" id="rating1">
-                    <!-- Кнопки 1-10 будут добавлены через JS -->
-                </div>
+                <div class="rating" id="rating1"></div>
                 <div class="labels">
                     <span>Ужасно</span>
                     <span>Отлично</span>
@@ -209,10 +270,8 @@
             
             <!-- Вопрос 2: Выступающие -->
             <div class="question">
-                <div class="question-title">2. Оцените качество выступлений (доклады, презентации)</div>
-                <div class="rating" id="rating2">
-                    <!-- Кнопки 1-10 будут добавлены через JS -->
-                </div>
+                <div class="question-title">2. Оцените качество выступлений</div>
+                <div class="rating" id="rating2"></div>
                 <div class="labels">
                     <span>Слабо</span>
                     <span>Превосходно</span>
@@ -221,10 +280,8 @@
             
             <!-- Вопрос 3: Актуальность -->
             <div class="question">
-                <div class="question-title">3. Насколько темы были актуальны и полезны?</div>
-                <div class="rating" id="rating3">
-                    <!-- Кнопки 1-10 будут добавлены через JS -->
-                </div>
+                <div class="question-title">3. Насколько темы были актуальны?</div>
+                <div class="rating" id="rating3"></div>
                 <div class="labels">
                     <span>Неактуально</span>
                     <span>Очень полезно</span>
@@ -233,45 +290,45 @@
             
             <!-- Вопрос 4: Атмосфера -->
             <div class="question">
-                <div class="question-title">4. Оцените атмосферу и общение на конференции</div>
-                <div class="rating" id="rating4">
-                    <!-- Кнопки 1-10 будут добавлены через JS -->
-                </div>
+                <div class="question-title">4. Оцените атмосферу и общение</div>
+                <div class="rating" id="rating4"></div>
                 <div class="labels">
                     <span>Не комфортно</span>
                     <span>Отлично</span>
                 </div>
             </div>
             
-            <!-- Текстовое поле: что понравилось -->
+            <!-- Текстовые поля -->
             <div class="textarea-group">
                 <label>👍 Что понравилось больше всего?</label>
                 <textarea id="like" placeholder="Например: доклады, организация, общение..." maxlength="300"></textarea>
                 <div class="counter"><span id="likeCount">0</span>/300</div>
             </div>
             
-            <!-- Текстовое поле: что улучшить -->
             <div class="textarea-group">
-                <label>💡 Что можно улучшить? Чего не хватило?</label>
+                <label>💡 Что можно улучшить?</label>
                 <textarea id="improve" placeholder="Ваши пожелания и замечания..." maxlength="300"></textarea>
                 <div class="counter"><span id="improveCount">0</span>/300</div>
             </div>
             
-            <!-- Текстовое поле: пожелания выступающим -->
             <div class="textarea-group">
                 <label>🎤 Пожелания выступающим</label>
                 <textarea id="wishes" placeholder="Что хотите сказать докладчикам?" maxlength="300"></textarea>
                 <div class="counter"><span id="wishesCount">0</span>/300</div>
             </div>
             
-            <div id="errorMsg" class="error-message"></div>
+            <div id="errorMsg" class="error-message" style="display: none;"></div>
             
             <button type="submit" id="submitBtn">Отправить анонимно</button>
         </form>
         
-        <div id="successMessage" class="success" style="display: none;">
-            <h2>✓ Спасибо за отзыв!</h2>
-            <p>Ваши ответы отправлены анонимно</p>
+        <div id="successMessage" style="display: none;">
+            <div class="success">
+                <div>✓</div>
+                <h2>Спасибо за отзыв!</h2>
+                <p>Ваши ответы отправлены анонимно</p>
+                <div id="statsDisplay" class="stats"></div>
+            </div>
         </div>
         
         <div class="footer">
@@ -288,16 +345,18 @@
         // Создание кнопок рейтинга
         function createRatingButtons(containerId) {
             const container = document.getElementById(containerId);
+            if (!container) return;
+            
             for (let i = 1; i <= 10; i++) {
                 const btn = document.createElement('div');
                 btn.className = 'rating-btn';
                 btn.textContent = i;
                 btn.dataset.value = i;
                 btn.onclick = function() {
-                    // Убираем выделение у всех кнопок в этом контейнере
+                    const container = this.parentNode;
                     container.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('selected'));
-                    // Выделяем нажатую
                     this.classList.add('selected');
+                    updateProgress();
                 };
                 container.appendChild(btn);
             }
@@ -321,10 +380,61 @@
         improve.addEventListener('input', () => improveCount.textContent = improve.value.length);
         wishes.addEventListener('input', () => wishesCount.textContent = wishes.value.length);
         
-        // Получение выбранных оценок
+        // Обновление прогресса
+        function updateProgress() {
+            const ratings = ['rating1', 'rating2', 'rating3', 'rating4'];
+            let answered = 0;
+            
+            ratings.forEach(id => {
+                if (document.querySelector(`#${id} .rating-btn.selected`)) {
+                    answered++;
+                }
+            });
+            
+            const progress = (answered / ratings.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+        
+        // Получение выбранной оценки
         function getSelectedRating(containerId) {
             const selected = document.querySelector(`#${containerId} .rating-btn.selected`);
-            return selected ? selected.dataset.value : 'Не выбрано';
+            return selected ? selected.dataset.value : null;
+        }
+        
+        // Отправка в Telegram
+        async function sendToTelegram(message) {
+            try {
+                // Пробуем через fetch
+                const response = await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        chat_id: CHAT_ID,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+                
+                if (response.ok) {
+                    return true;
+                }
+            } catch (e) {
+                console.log('Fetch error:', e);
+            }
+            
+            // Запасной вариант через image
+            try {
+                const img = new Image();
+                img.src = 'https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage?chat_id=' + CHAT_ID + '&text=' + encodeURIComponent(message);
+                document.body.appendChild(img);
+                setTimeout(() => {
+                    if (img.parentNode) document.body.removeChild(img);
+                }, 1000);
+                return true;
+            } catch (e) {
+                console.log('Image error:', e);
+                return false;
+            }
         }
         
         // Отправка формы
@@ -333,62 +443,66 @@
             
             const errorMsg = document.getElementById('errorMsg');
             
-            // Проверяем, что все оценки выбраны
+            // Проверяем оценки
             const rating1 = getSelectedRating('rating1');
             const rating2 = getSelectedRating('rating2');
             const rating3 = getSelectedRating('rating3');
             const rating4 = getSelectedRating('rating4');
             
-            if (rating1 === 'Не выбрано' || rating2 === 'Не выбрано' || rating3 === 'Не выбрано' || rating4 === 'Не выбрано') {
+            if (!rating1 || !rating2 || !rating3 || !rating4) {
+                errorMsg.style.display = 'block';
                 errorMsg.textContent = 'Пожалуйста, ответьте на все вопросы с оценкой (1-10)';
                 return;
             }
             
-            errorMsg.textContent = '';
+            errorMsg.style.display = 'none';
             
             const btn = document.getElementById('submitBtn');
             btn.disabled = true;
-            btn.textContent = 'Отправка...';
+            btn.textContent = '⏳ Отправка...';
+            
+            // Вычисляем среднюю оценку
+            const avg = ((parseInt(rating1) + parseInt(rating2) + parseInt(rating3) + parseInt(rating4)) / 4).toFixed(1);
             
             // Формируем сообщение
-            const message = `🔔 НОВЫЙ ОТЗЫВ С КОНФЕРЕНЦИИ
+            const message = `🔔 <b>НОВЫЙ ОТЗЫВ С КОНФЕРЕНЦИИ МГТУГА</b>
 ══════════════════════════
 
-📊 ОЦЕНКИ (1-10):
+📊 <b>ОЦЕНКИ (1-10):</b>
 • Организация: ${rating1}/10
 • Выступления: ${rating2}/10
 • Актуальность: ${rating3}/10
 • Атмосфера: ${rating4}/10
+• Среднее: ${avg}/10
 
 ══════════════════════════
-👍 Что понравилось:
+👍 <b>Что понравилось:</b>
 ${like.value || '—'}
 
-💡 Что улучшить:
+💡 <b>Что улучшить:</b>
 ${improve.value || '—'}
 
-🎤 Пожелания выступающим:
+🎤 <b>Пожелания выступающим:</b>
 ${wishes.value || '—'}
 
 ══════════════════════════
-⏰ Время: ${new Date().toLocaleString('ru-RU')}
-📊 Статистика ответов:
-   Средняя оценка: ${((parseInt(rating1) + parseInt(rating2) + parseInt(rating3) + parseInt(rating4)) / 4).toFixed(1)}/10`;
+⏰ <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
+📱 <b>Устройство:</b> ${/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? 'Мобильное' : 'Компьютер'}`;
             
-            try {
-                await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({chat_id: CHAT_ID, text: message})
-                });
-                
-                document.getElementById('surveyForm').style.display = 'none';
-                document.getElementById('successMessage').style.display = 'block';
-            } catch (error) {
-                alert('Ошибка, но отзыв будет отправлен');
-                document.getElementById('surveyForm').style.display = 'none';
-                document.getElementById('successMessage').style.display = 'block';
-            }
+            // Отправляем
+            await sendToTelegram(message);
+            
+            // Показываем статистику
+            const statsDisplay = document.getElementById('statsDisplay');
+            statsDisplay.innerHTML = `
+                <div class="stats-title">📊 Ваша статистика</div>
+                <div class="stats-item"><span>Средняя оценка:</span> <span class="stats-value">${avg}/10</span></div>
+                <div class="stats-item"><span>Всего ответов:</span> <span class="stats-value">4/4</span></div>
+            `;
+            
+            // Показываем успех
+            document.getElementById('surveyForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
         });
     </script>
 </body>
